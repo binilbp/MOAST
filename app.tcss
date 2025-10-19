@@ -1,0 +1,25 @@
+Screen {
+	align: center top;
+	background: $background-darken-1;
+}
+
+
+NameContainer {
+	padding: 0 2;
+	/*background: $secondary-background-darken-1;*/
+	height: 1fr;
+}
+
+#ascii {
+	width: 35%;
+	color: $primary;
+}
+
+Body {
+	padding: 2 3;
+	height: 6fr;
+}
+
+#userprompt {
+	border: round $accent-darken-2;
+}
