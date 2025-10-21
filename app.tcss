@@ -23,3 +23,11 @@ Body {
 #userprompt {
 	border: round $accent-darken-2;
 }
+
+#sent-msg {
+	color: $success;
+	opacity: 100%;
+	width: 100%;
+	content-align-horizontal: center;
+	padding: 1 0;
+}

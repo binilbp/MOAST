@@ -1,3 +1,5 @@
+import asyncio
+from textual import on
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Static, TabbedContent, TabPane, Label, Input
 from textual.containers import Container, Vertical, VerticalScroll
@@ -23,6 +25,19 @@ class UserPrompt(VerticalScroll):
                 placeholder = "Give your instruction here",
                 id = "userprompt"
         )
+
+    @on (Input.Submitted)
+    async def send_user_input(self) -> None:
+        input = self.query_one(Input)
+        user_input = input.value
+        label = Label("Instruction sent !", id ="sent-msg")
+        self.mount(label)
+
+        input.value = ""                                        #clear for nxt input
+        label.styles.animate("opacity", value=0, duration=2)    #fadeout animation
+        await asyncio.sleep(3)
+        label.remove()
+
 
 class Body(Vertical):
     # main body container of the app
