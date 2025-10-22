@@ -65,6 +65,10 @@ class MainApp (App):
     def on_mount(self) ->None:
         self.theme = "dracula"
 
+        #on start bring the cursor focus to input widget
+        self.user_prompt = self.query_one("#userprompt", Input)
+        self.user_prompt.focus()
+
 
 if __name__ == "__main__":
     app = MainApp()
