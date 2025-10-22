@@ -1,4 +1,5 @@
-import asyncio
+from libagent import get_commands
+import asyncio 
 from textual import on
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Static, TabbedContent, TabPane, Label, Input
@@ -30,13 +31,19 @@ class UserPrompt(VerticalScroll):
     async def send_user_input(self) -> None:
         input = self.query_one(Input)
         user_input = input.value
+        input.value = ""                                        #clear for nxt input
+
         label = Label("Instruction sent !", id ="sent-msg")
         self.mount(label)
+        label.styles.animate("opacity", value=0, duration=1.5)    #fadeout animation
 
-        input.value = ""                                        #clear for nxt input
-        label.styles.animate("opacity", value=0, duration=2)    #fadeout animation
-        await asyncio.sleep(3)
+        response = get_commands(user_input = user_input, model = 'llama3.2')
+        command = Label(response['response'], id ="command")
+        self.mount(command)
+        await asyncio.sleep(2.5)  #give enough time for animation before the label is removed
         label.remove()
+
+
 
 
 class Body(Vertical):
