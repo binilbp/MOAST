@@ -10,7 +10,7 @@ class NameContainer(Container):
     #ASCII Art container
 
     def compose(self) -> ComposeResult:
-        with open("moast_ascii.txt", "r") as artfile:
+        with open("linquix_ascii.txt", "r") as artfile:
             art = artfile.read()
             yield Label(art, id="ascii")
 
@@ -80,6 +80,14 @@ class Body(VerticalScroll):
 class MainApp (App):
 
     CSS_PATH = "app.tcss"
+    #define the shortcuts
+    BINDINGS = [
+            ("^q","quit", "Quit")
+    ]
+
+    def action_quit(self) -> None:
+        self.exit()
+
 
     def compose(self) -> ComposeResult:
         yield Footer()
