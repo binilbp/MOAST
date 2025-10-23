@@ -25,9 +25,17 @@ Body {
 }
 
 #sent-msg {
+	margin: 1;
 	color: $success;
 	opacity: 100%;
 	width: 100%;
 	content-align-horizontal: center;
 	padding: 1 0;
+}
+
+#terminaldisplay {
+	margin: 2 0;
+	width: 100%;
+	border: round $accent-darken-2;
+	content_align-vertical: top;
 }
