@@ -10,7 +10,7 @@ class NameContainer(Container):
     #ASCII Art container
 
     def compose(self) -> ComposeResult:
-        with open("linquix_ascii.txt", "r") as artfile:
+        with open("moast_ascii.txt", "r") as artfile:
             art = artfile.read()
             yield Label(art, id="ascii")
 
