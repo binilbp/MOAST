@@ -2,8 +2,8 @@ from libagent import get_context_commands
 import asyncio 
 from textual import on
 from textual.app import App, ComposeResult
-from textual.widgets import Footer, Static, TabbedContent, TabPane, Label, Input, TextArea
-from textual.containers import Container, Vertical, VerticalScroll
+from textual.widgets import Footer, Static, TabbedContent, TabPane, Label, Input, TextArea, Button
+from textual.containers import Container, Vertical, VerticalScroll, Horizontal
 
 
 class NameContainer(Container):
@@ -22,22 +22,29 @@ class NameContainer(Container):
 
 class Terminal(VerticalScroll):
     def compose(self) -> ComposeResult:
-        yield Input(
-                placeholder = "Give your instruction here",
+        inputbox = Input(
+                placeholder = "Give your instruction here. Press enter to send instructions",
                 id = "userprompt"
         )
+        inputbox.border_title = "Prompt"
+        yield inputbox
 
-        yield TextArea(
+        agentbox = TextArea()
+        terminalbox =  TextArea(
                 id = "terminaldisplay",
                 disabled = True
         )
+        
+        terminalbox.border_title = "Terminal"
+        yield terminalbox
+        yield ExecutionBox()
 
 
     @on (Input.Submitted)
     async def send_user_input(self) -> None:
-        input = self.query_one(Input)
-        user_input = input.value
-        input.value = ""                                        #clear for nxt input
+        inputbox = self.query_one(Input)
+        user_input = inputbox.value
+        inputbox.value = ""                                        #clear for nxt input
 
         #label = Label("Instruction sent !", id ="sent-msg")
         #self.mount(label)
@@ -60,8 +67,11 @@ class Terminal(VerticalScroll):
         #await asyncio.sleep(2.5)  #give enough time for animation before the label is removed
         #label.remove()
 
-
-
+class ExecutionBox(Horizontal):
+    def compose(self) -> ComposeResult:
+        yield (Button.success("Execute", flat = True))
+        yield (Button.error("Stop", flat = True ))
+        
 
 class Body(VerticalScroll):
     # main body container of the app

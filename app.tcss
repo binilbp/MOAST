@@ -22,6 +22,8 @@ Body {
 
 #userprompt {
 	border: round $accent-darken-2;
+	border-title-align: right;
+	background: $background-darken-1;
 }
 
 #sent-msg {
@@ -34,8 +36,23 @@ Body {
 }
 
 #terminaldisplay {
+	padding: 1 2;
 	margin: 2 0;
 	width: 100%;
 	border: round $accent-darken-2;
+	border-title-align: right;
 	content_align-vertical: top;
+	background: $background-darken-1;
+}
+
+ExecutionBox {
+	width: 100%;
+	max-height: 3;
+	/*background: $primary;*/
+	align: right top;
+
+}
+
+Button {
+	margin: 0 1;
 }
