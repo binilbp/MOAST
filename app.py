@@ -10,14 +10,10 @@ class NameContainer(Container):
     #ASCII Art container
 
     def compose(self) -> ComposeResult:
-        yield Static(
-            r'''
-▗▖  ▗▖ ▗▄▖  ▗▄▖  ▗▄▄▖▗▄▄▄▖
-▐▛▚▞▜▌▐▌ ▐▌▐▌ ▐▌▐▌     █  
-▐▌  ▐▌▐▌ ▐▌▐▛▀▜▌ ▝▀▚▖  █  
-▐▌  ▐▌▝▚▄▞▘▐▌ ▐▌▗▄▄▞▘  █ 
-''',id = "ascii"
-        )
+        with open("linquix_ascii.txt", "r") as artfile:
+            art = artfile.read()
+            yield Label(art, id="ascii")
+
 
 
 class Terminal(VerticalScroll):

@@ -5,19 +5,22 @@ Screen {
 
 
 NameContainer {
-	padding: 0 2;
+	margin-top: 2;
+	padding: 0 4;
 	/*background: $secondary-background-darken-1;*/
-	height: 1fr;
+	height: auto;
+	width: 100%;
 }
 
 #ascii {
-	width: 35%;
+	height: 3;
 	color: $primary;
 }
 
 Body {
+	margin-top: 1;
 	padding: 2 3;
-	height: 6fr;
+	height: 1fr;
 }
 
 #userprompt {
