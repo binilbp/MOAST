@@ -21,8 +21,9 @@ Body {
 }
 
 #userprompt {
-	border: round $accent-darken-2;
+	border: round $primary;
 	border-title-align: right;
+	border-title-color: $warning;
 	background: $background-darken-1;
 }
 
@@ -41,6 +42,7 @@ Body {
 	width: 100%;
 	border: round $accent-darken-2;
 	border-title-align: right;
+	border-title-color: $warning;
 	content_align-vertical: top;
 	background: $background-darken-1;
 }

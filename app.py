@@ -46,10 +46,6 @@ class Terminal(VerticalScroll):
         user_input = inputbox.value
         inputbox.value = ""                                        #clear for nxt input
 
-        #label = Label("Instruction sent !", id ="sent-msg")
-        #self.mount(label)
-        #label.styles.animate("opacity", value=0, duration=1.5)    #fadeout animation
-
         response = get_context_commands(user_input = user_input, model = 'llama3.2')
 
         command_area = self.query_one(TextArea)
@@ -64,8 +60,6 @@ class Terminal(VerticalScroll):
         command_area.disabled = False
         #move the focus to command now
         command_area.focus()
-        #await asyncio.sleep(2.5)  #give enough time for animation before the label is removed
-        #label.remove()
 
 class ExecutionBox(Horizontal):
     def compose(self) -> ComposeResult:
